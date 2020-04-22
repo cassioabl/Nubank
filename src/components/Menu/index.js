@@ -3,7 +3,7 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import QRCode from 'react-native-qrcode-svg';
 
-import { Container, Code, Nav, NavItem, NavText, SignOutButton, SignOutButtonText } from './styles';
+import { Container, Code, UserAccount, UserAccountGroup, Title, Value, Nav, NavItem, NavItemName, NavTextGroup, NavText, NavTextDesc, SignOutButton, SignOutButtonText } from './styles';
 
 export default function Menu( { translateY }) {
   return (
@@ -22,30 +22,66 @@ export default function Menu( { translateY }) {
         />
       </Code>
 
+      <UserAccount>
+        <UserAccountGroup>
+          <Title>Banco</Title>
+          <Value>260 - Nu Pagamentos S.A.</Value>
+        </UserAccountGroup>
+        <UserAccountGroup>
+          <Title>Agência</Title>
+          <Value>0001</Value>
+        </UserAccountGroup>
+        <UserAccountGroup>
+          <Title>Conta</Title>
+          <Value>9267079-8</Value>
+        </UserAccountGroup>
+      </UserAccount>
+
       <Nav>
         <NavItem>
-          <Icon name="help-outline" size={20} color="#FFF" />
-          <NavText>Me ajuda</NavText>
+          <NavItemName>
+            <Icon name="help-outline" size={22} color="#FFF" />
+            <NavText>Me ajuda</NavText>
+          </NavItemName>
+          <Icon name="keyboard-arrow-right" size={22} color="#FFF" />
         </NavItem>
         <NavItem>
-          <Icon name="person-outline" size={20} color="#FFF" />
-          <NavText>Perfil</NavText>
+          <NavItemName>
+            <Icon name="person-outline" size={22} color="#FFF" />
+            <NavTextGroup>
+              <NavText>Perfil</NavText>
+              <NavTextDesc>Nome de preferência, telefone, e-mail</NavTextDesc>
+            </NavTextGroup>
+            </NavItemName>
+          <Icon name="keyboard-arrow-right" size={22} color="#FFF" />
         </NavItem>
         <NavItem>
-          <Icon name="help-outline" size={20} color="#FFF" />
-          <NavText>Configurar conta</NavText>
+        <NavItemName>
+            <Icon name="keyboard-arrow-right" size={22} color="#FFF" />
+            <NavText>Configurar conta</NavText>
+          </NavItemName>
+          <Icon name="keyboard-arrow-right" size={22} color="#FFF" />
         </NavItem>
         <NavItem>
-          <Icon name="credit-card" size={20} color="#FFF" />
-          <NavText>Configurar cartão</NavText>
+        <NavItemName>
+            <Icon name="credit-card" size={22} color="#FFF" />
+            <NavText>Configurar cartão</NavText>
+          </NavItemName>
+          <Icon name="keyboard-arrow-right" size={22} color="#FFF" />
         </NavItem>
         <NavItem>
-          <Icon name="store" size={20} color="#FFF" />
-          <NavText>Pedir conta PJ</NavText>
+          <NavItemName>
+            <Icon name="store" size={22} color="#FFF" />
+            <NavText>Pedir conta PJ</NavText>
+            </NavItemName>
+          <Icon name="keyboard-arrow-right" size={22} color="#FFF" />
         </NavItem>
         <NavItem>
-          <Icon name="smartphone" size={20} color="#FFF" />
-          <NavText>Configurações do app</NavText>
+          <NavItemName>
+            <Icon name="smartphone" size={22} color="#FFF" />
+            <NavText>Configurações do app</NavText>
+          </NavItemName>
+          <Icon name="keyboard-arrow-right" size={22} color="#FFF" />
         </NavItem>
       </Nav>
 

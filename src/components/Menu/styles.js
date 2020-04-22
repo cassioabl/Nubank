@@ -5,11 +5,36 @@ export const Container = styled(Animated.ScrollView)`
   padding: 0 30px;
 `;
 
-export const Code  = styled.View`
+export const Code = styled.View`
   overflow: hidden;
   background: #FFF;
   padding: 5px;
   align-self: center;
+`;
+
+export const UserAccount = styled.View`
+  /* flex: 1;
+  flex-direction: row; */
+  padding-top: 10px;
+  align-items: center;
+`;
+
+export const UserAccountGroup = styled.View`
+  flex: 1;
+  flex-direction: row;
+  padding-top: 2px;
+`;
+
+export const Title = styled.Text`
+  font-size: 14px;
+  color: #FFF;
+`;
+
+export const Value = styled.Text`
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFF;
+  padding-left: 5px;
 `;
 
 export const Nav  = styled.View`
@@ -19,17 +44,32 @@ export const Nav  = styled.View`
 `;
 
 export const NavItem  = styled.View`
+  justify-content: space-between;
   flex-direction: row;
   align-items: center;
-  padding: 12px 0;
+  padding: 10px 0;
   border-bottom-width: ${StyleSheet.hairlineWidth}px;
   border-bottom-color: rgba(255, 255, 255, 0.8);
+`;
+
+export const NavTextGroup = styled.View`
+`;
+
+export const NavItemName = styled.View`
+  flex-direction: row;
+  align-items: center;
 `;
 
 export const NavText  = styled.Text`
   font-size: 15px;
   color: #FFF;
-  margin-left: 20px;
+  margin-left: 15px;
+`;
+
+export const NavTextDesc  = styled.Text`
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-left: 15px;
 `;
 
 export const SignOutButton = styled.TouchableOpacity`
