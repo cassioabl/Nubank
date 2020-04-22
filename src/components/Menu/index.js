@@ -5,7 +5,7 @@ import QRCode from 'react-native-qrcode-svg';
 
 import { Container, Code, Nav, NavItem, NavText, SignOutButton, SignOutButtonText } from './styles';
 
-export default function Menu( { translateY}) {
+export default function Menu( { translateY }) {
   return (
     <Container style={{
       opacity: translateY.interpolate({
@@ -16,8 +16,9 @@ export default function Menu( { translateY}) {
       <Code>
         <QRCode
           value="http://awesome.link.qr"
+          color="#8F20B0"
           backgroundColor="#FFF"
-          size={80}
+          size={100}
         />
       </Code>
 

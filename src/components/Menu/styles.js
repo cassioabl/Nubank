@@ -8,7 +8,7 @@ export const Container = styled(Animated.ScrollView)`
 export const Code  = styled.View`
   overflow: hidden;
   background: #FFF;
-  padding: 10px;
+  padding: 5px;
   align-self: center;
 `;
 

@@ -1,55 +1,53 @@
 import React from 'react';
-import Icon from 'react-native-vector-icons/MaterialIcons'
-
 import { Animated } from 'react-native';
 import { PanGestureHandler, State } from 'react-native-gesture-handler';
 
 import Header from '~/components/Header';
 import Tabs from '~/components/Tabs';
 import Menu from '~/components/Menu';
+import Carousel from '~/components/Carousel';
 
-import { Container, Content, Card, CardHeader, CardContent, CardFooter, Title, Description, Annotation } from './styles';
+import { Container, Content, Card } from './styles';
 
 export default function Main() {
-  let offset = 0;
+  let offset = { x: 0, y: 0};
   const translateY = new Animated.Value(0);
 
-  const animatedEvent= Animated.event(
+  const animatedEventY = Animated.event(
     [
       {
         nativeEvent: {
           translationY: translateY,
         },
       },
-    ],
-    { useNativeDriver: true },
+    ]
   )
 
-  function onHandlerStateChanged(event) {
+  function onHandlerStateChangedY(event) {
     if(event.nativeEvent.oldState === State.ACTIVE) {
       let opened = false;
       const { translationY } = event.nativeEvent;
 
-      offset += translationY;
+      offset.y += translationY;
 
-      translateY.setOffset(offset);
+      translateY.setOffset(offset.y);
       translateY.setValue(0);
 
       if(translationY >= 30) {
         opened = true;
       } else {
-        translateY.setValue(offset);
+        translateY.setValue(offset.y);
         translateY.setOffset(0);
-        offset = 0;
+        offset.y = 0;
       }
       
       Animated.timing(translateY, {
-        toValue: opened ? 480 : 0,
+        toValue: opened ? 460 : 0,
         duration: 200,
         useNativeDriver: true,
       }).start(() => {
-        offset = opened ? 480 : 0;
-        translateY.setOffset(offset);
+        offset.y = opened ? 460 : 0;
+        translateY.setOffset(offset.y);
         translateY.setValue(0);
       });
     }
@@ -61,33 +59,23 @@ export default function Main() {
 
       <Content>
         <Menu translateY={translateY}/>
-
         <PanGestureHandler
-          onGestureEvent={animatedEvent}
-          onHandlerStateChange={onHandlerStateChanged}
+          onGestureEvent={animatedEventY}
+          onHandlerStateChange={onHandlerStateChangedY}
+          activeOffsetY={[-20, 20]}
         >
-          <Card style={{
-            transform: [{
-              translateY: translateY.interpolate({
-                inputRange:[-350, 0, 480],
-                outputRange: [-50, 0, 480],
-                extrapolate: 'clamp'
-              }),
-            }]
-          }}>
-            <CardHeader>
-              <Icon name="attach-money" size={28} color="#666" />
-              <Icon name="visibility-off" size={28} color="#666" />
-            </CardHeader>
-            <CardContent>
-              <Title>Saldo disponível</Title>
-              <Description>R$ 152.158.27</Description>
-            </CardContent>
-            <CardFooter>
-              <Annotation>
-                Transferência de R$ 20,00 recebida de Cassio Leite em 16 ABR
-              </Annotation>
-            </CardFooter>
+          <Card
+            style={{
+              transform: [{
+                translateY: translateY.interpolate({
+                  inputRange:[-350, 0, 460],
+                  outputRange: [-50, 0, 460],
+                  extrapolate: 'clamp'
+                }),
+              }]
+            }}
+          >
+            <Carousel></Carousel>
           </Card>
         </PanGestureHandler>
       </Content>
